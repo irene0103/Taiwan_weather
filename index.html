@@ -1,122 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taiwan weather</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=LXGW+WenKai+TC:wght@300;400;700&family=Lilita+One&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=sunny_snowing" />
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <style>
-    svg {
-      height: 100vh;
-      width: 70%;
-      margin: auto;
-    }
-
-    body {
-      background-color: #c8ba82;
-      
-    }
-
-    #app {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-    }
-
-    path {
-      stroke: rgb(249, 250, 244);
-      fill: transparent;
-      transition: 0.5s;
-      cursor: pointer;
-
-      &:hover {
-        fill: #7fd1cc;
-        transform: translate(-5px, -5px);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taiwan weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=LXGW+WenKai+TC:wght@300;400;700&family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=sunny_snowing"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      svg {
+        height: 100vh;
+        width: 70%;
+        margin: auto;
       }
-    }
 
-    .title_area {
-      width: 30%;
-      /* position: absolute;
+      body {
+        background-color: #c8ba82;
+      }
+
+      #app {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+      }
+
+      path {
+        stroke: rgb(249, 250, 244);
+        fill: transparent;
+        transition: 0.5s;
+        cursor: pointer;
+
+        &:hover {
+          fill: #7fd1cc;
+          transform: translate(-5px, -5px);
+        }
+      }
+
+      .title_area {
+        width: 30%;
+        /* position: absolute;
         right: 20px;
         top: 20px; */
-      color: rgb(101, 88, 52);
-      /* color: #f2f6c8; */
-      font-size: 30px;
-      font-family: "Lilita One", sans-serif;
-      font-weight: 300;
-    }
-
-    h1 {
-      span {
-        color: #7fd1cc;
-        padding-left: 10px;
+        color: rgb(101, 88, 52);
+        /* color: #f2f6c8; */
+        font-size: 30px;
+        font-family: "Lilita One", sans-serif;
+        font-weight: 300;
       }
-    }
 
-    hr {
-      width: 100px;
-      margin-left: 0;
-      border: none;
-      border-bottom: solid 2px white;
-    }
-    
-    h3{
-      font-size: 40px;
-      color: rgb(137, 120, 76);
-      margin: 0;
-    }
-    h4{
-      color: #edf1c2;
-      font-size: 40px;
-      margin: 0;
-    }
-    h5 {
-      color: #edf1c2;
-      font-size: 30px;
-      margin: 0;
-    }
-    
-    .material-symbols-outlined {
-      color: #f2f6c8;
-      font-size: 40px;
-    }
-  </style>
-</head>
+      h1 {
+        span {
+          color: #7fd1cc;
+          padding-left: 10px;
+        }
+      }
 
-<body>
-  <div id="app">
-    <div class="title_area">
-      <h1>
-        Taiwan<span class="material-symbols-outlined"> sunny_snowing </span><br />Weather Map<br />
-      </h1>
-      <hr />
+      hr {
+        width: 100px;
+        margin-left: 0;
+        border: none;
+        border-bottom: solid 2px white;
+      }
 
-      <h3>{{ currentDate }}</h3>
-      <div class="forcast" v-if="now_area">
-        <h4>{{now_area.place}}</h4>
-        <h5>{{now_area.low}}°C~{{now_area.high}}°C</h5>
-        <h5>{{now_area.weather}}</h5>
+      h3 {
+        font-size: 40px;
+        color: rgb(137, 120, 76);
+        margin: 0;
+      }
+      h4 {
+        color: #edf1c2;
+        font-size: 40px;
+        margin: 0;
+      }
+      h5 {
+        color: #edf1c2;
+        font-size: 30px;
+        margin: 0;
+      }
+
+      .material-symbols-outlined {
+        color: #f2f6c8;
+        font-size: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="title_area">
+        <h1>
+          Taiwan<span class="material-symbols-outlined"> sunny_snowing </span
+          ><br />Weather Map<br />
+        </h1>
+        <hr />
+
+        <h3>{{ currentDate }}</h3>
+        <div class="forcast" v-if="now_area">
+          <h4>{{now_area.place}}</h4>
+          <h5>{{now_area.low}}°C~{{now_area.high}}°C</h5>
+          <h5>{{now_area.weather}}</h5>
+        </div>
       </div>
 
-    </div>
-
-    <svg data-name="圖層 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 841.89">
-      <title>Taiwan weather</title>
-      <path v-for="place in place_data" :key="place.place" :data-name="place.place"
-        @mouseenter="handleMouseEnter(place.place)" @mouseleave="handleMouseLeave" :d="place.d" />
+      <svg
+        data-name="圖層 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 595.28 841.89"
+      >
+        <title>Taiwan weather</title>
+        <path
+          v-for="place in place_data"
+          :key="place.place"
+          :data-name="place.place"
+          @mouseenter="handleMouseEnter(place.place)"
+          @mouseleave="handleMouseLeave"
+          :d="place.d"
+        />
 
         <g v-for="item in place_data" :key="item.tag" :data-name="item.place">
           <path
-            v-for="list in item.kinmen || item.lienchiang || item.others" 
+            v-for="list in item.kinmen || item.lienchiang || item.others"
             :key="list.d"
             :data-name="item.place"
             :d="list.d"
@@ -125,72 +136,81 @@
           />
         </g>
       </svg>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
-  <script src="weather.json"></script>
-  <script>
-    const app = Vue.createApp({
-      data() {
-        return {
-          hovered_area: [],
-          place_data: [],
-          filter: '',
-          currentDate: '',
-        };
-      },
-      methods: {
-        handleMouseEnter(placeName) {
-          this.filter = placeName;
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.js"></script>
+    <script src="weather.json"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            hovered_area: [],
+            place_data: [],
+            filter: "",
+            currentDate: "",
+          };
         },
-        handleMouseLeave(){
-          this.filter='';
-        },
-        async fetchData() {
-          const [apiResponse, jsonResponse] = await Promise.all([
-            axios.get("https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWA-6ED4C0E9-6EC8-4FB2-A114-44BE4D45563A&format=JSON&locationName=&elementName="),
-            axios.get("./weather.json"),
-          ]);
-          this.hovered_area = apiResponse.data.records.locations[0].location;
-          this.place_data = jsonResponse.data;
-        },
-        getCurrentDate() {
-          const now = new Date();
-          this.currentDate = now.toLocaleDateString(); 
-        },
-        
-      },
-      computed: {
-        now_area() {
-          const result = this.hovered_area.find(n => n.locationName === this.filter);
+        methods: {
+          handleMouseEnter(placeName) {
+            this.filter = placeName;
+          },
+          handleMouseLeave() {
+            this.filter = "";
+          },
+          async fetchData() {
+            const [apiResponse, jsonResponse] = await Promise.all([
+              axios.get(
+                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWA-6ED4C0E9-6EC8-4FB2-A114-44BE4D45563A&format=JSON&locationName=&elementName="
+              ),
+              axios.get("./weather.json"),
+            ]);
+            console.log(apiResponse.data.records.Locations[0].Location);
 
-          if (result) {
-            const date = result.weatherElement.find(el=>el.elementName === 'Wx').time[0].startTime.split(" ")[0];
-            const high = result.weatherElement.find(el => el.elementName === 'MaxT').time[0].elementValue[0].value;
-            const low = result.weatherElement.find(el => el.elementName === 'MinT').time[0].elementValue[0].value;
-            const weather = result.weatherElement.find(el => el.elementName === 'Wx').time[0].elementValue[0].value;
-            console.log(date);
-            
-            return {
-              place: this.filter,
-              high: high,
-              low: low,
-              weather: weather,
-              date:date
-            };
-          } else {
-            return null;
-          }
-        }
-        
-      },
-      mounted() {
-        this.fetchData();
-        this.getCurrentDate();
+            this.hovered_area = apiResponse.data.records.Locations[0].Location;
+            this.place_data = jsonResponse.data;
+          },
+          getCurrentDate() {
+            const now = new Date();
+            this.currentDate = now.toLocaleDateString();
+          },
+        },
+        computed: {
+          now_area() {
+            const result = this.hovered_area.find((n) => {
+              return n.LocationName === this.filter;
+            });
 
-      },
-    }).mount("#app");
-  </script>
-</body>
+            if (result) {
+              const date = result.WeatherElement.find(
+                (el) => el.ElementName === "天氣現象"
+              ).Time[0].StartTime.split(" ")[0];
+              const high = result.WeatherElement.find(
+                (el) => el.ElementName === "最高溫度"
+              ).Time[0].ElementValue[0].MaxTemperature;
+              const low = result.WeatherElement.find(
+                (el) => el.ElementName === "最低溫度"
+              ).Time[0].ElementValue[0].MinTemperature;
+              const weather = result.WeatherElement.find(
+                (el) => el.ElementName === "天氣現象"
+              ).Time[0].ElementValue[0].Weather;
 
+              return {
+                place: this.filter,
+                high: high,
+                low: low,
+                weather: weather,
+                date: date,
+              };
+            } else {
+              return null;
+            }
+          },
+        },
+        mounted() {
+          this.fetchData();
+          this.getCurrentDate();
+        },
+      }).mount("#app");
+    </script>
+  </body>
 </html>
